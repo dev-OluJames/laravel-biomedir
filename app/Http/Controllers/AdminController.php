@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Models\Article;
 use App\Models\Categorie;
+use App\Models\Contact;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
@@ -46,6 +49,8 @@ class AdminController extends Controller
     public function show_article($slug){
         $data = DB::table('articles')->where('slug','=', $slug)->get();
         $article = Article::find($data[0]->id);
+        $article->view += 1;
+        $article->save();
         $category = DB::table('categories')->where('id','=',$article->categorie_id)->get();
         $sub_category = Categorie::find($category[0]->id);
         return view('admin.show_article',['article'=>$article, 'sub_category'=>$sub_category]);
@@ -127,7 +132,8 @@ class AdminController extends Controller
         if($category and $category->categorie_id){
             $parent_categ = Categorie::find($category->categorie_id);
         }
-       $items = DB::table('articles')->where('categorie_id', "=",$data[0]->id)->get();
+       $items = DB::table('articles')->where('categorie_id', "=",$data[0]->id)
+           ->paginate(10);
        $sub_categ = DB::table('categories')->where('categorie_id', $data[0]->id)->get();
        return view('admin.show_categories',['data'=>$data,
                                                     'category'=>$category,
@@ -195,12 +201,38 @@ class AdminController extends Controller
     public function contact(){
         if(Auth::check()){
             $user = Auth::user();
+            return view('contact',['user'=>$user]);
+        }else{
+            return view('contact');
         }
-        return view('contact',['user'=>$user]);
+
     }
 
-    public function send_email(){
-
+    public function send_email(Request $request){
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->message = $request->message;
+        if($request->has('phone')){
+            $contact->phone = $request->phone;
+        }
+        if(Auth::check()){
+            $user = Auth::user();
+            $contact->user_id = $request->id;
+        }
+        $req = (array) $request;
+        try {
+            /*Mail::send('mail', ["request_message"=>$request->message,'request_email'=>$request->email], function($message) use ($request) {
+                $message->from($request->email, $request->email);
+                $message->sender($request->email, $request->email);
+                $message->to('biomedir.togo@gmail.com')->subject($request->subject);
+            });*/
+            Mail::to('biomedir.togo@gmail.com')->send(new ContactMail($request->email));
+            $contact->save();
+        }catch (\Swift_SwiftException $exception){
+            return back()->with('error',$exception->getMessage());
+        }
+        return back()->with('success','Votre mail a été bien envoyé');
     }
 
     /**
@@ -226,6 +258,23 @@ class AdminController extends Controller
         if ($request->has('article_version')) {
 
             $article->article_version = 1;
+        }
+        else{
+            $article->article_version = 0;
+        }
+        if ($request->has('trends')) {
+
+            $article->trends = 1;
+        }
+        else{
+            $article->trends = 0;
+        }
+        if ($request->has('medweek')) {
+
+            $article->medweek = 1;
+        }
+        else{
+            $article->medweek = 0;
         }
         $article->article_promotion = $request->article_promotion;
         //dd( request()->article_image1);

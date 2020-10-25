@@ -78,9 +78,6 @@
                             <!-- Cart -->
                             <div class="cart">
                                 <div class="cart_container d-flex flex-row align-items-center justify-content-end">
-                                    <div class="user_icon" style="size: 48px">
-                                        <img src="{{asset('asset/images/user.svg')}}" alt="">
-                                    </div>
                                     <div class="cart_content">
                                         <div class="cart_text"><a href="#">{{$aUser->name}}</a></div>
                                     </div>
@@ -198,65 +195,21 @@
                                 </form>
                             </div>
                             <ul class="page_menu_nav">
-                                <li class="page_menu_item has-children">
-                                    <a href="#">Language<i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Italian<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Spanish<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Japanese<i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="page_menu_item has-children">
-                                    <a href="#">Currency<i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
                                 <li class="page_menu_item">
-                                    <a href="#">Home<i class="fa fa-angle-down"></i></a>
+                                    <a href="{{url('index')}}">Home<i class="fa fa-angle-down"></i></a>
                                 </li>
+                                @foreach($listCateg as $item)
                                 <li class="page_menu_item has-children">
-                                    <a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
+                                    <a href="{{url('show_categories/'.$item->slug)}}">{{$item->category_name}}<i class="fa fa-angle-down"></i></a>
                                     <ul class="page_menu_selection">
-                                        <li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
-                                        <li class="page_menu_item has-children">
-                                            <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-                                            <ul class="page_menu_selection">
-                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                        @foreach(App\Models\Categorie::find($item->id)->child as $sub_category)
+                                        <li class="page_menu_item"><a href="{{url('show_categories/'.$sub_category->slug)}}">{{$sub_category->category_name}}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
-                                <li class="page_menu_item has-children">
-                                    <a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="page_menu_item has-children">
-                                    <a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
+                                @endforeach
+                                <li class="page_menu_item"><a href="{{url('about')}}">About<i class="fa fa-angle-down"></i></a></li>
+                                <li class="page_menu_item"><a href="{{url('contact')}}">contact<i class="fa fa-angle-down"></i></a></li>
                             </ul>
 
                             <div class="menu_contact">

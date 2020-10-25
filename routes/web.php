@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 /*
@@ -14,9 +15,8 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/index', function () {
-    return view('index');
-});
+Route::get('index', [HomeController::class,'index']);
+
 Route::get('login', [AuthController::class, 'index']);
 Route::post('post-login', [AuthController::class, 'postLogin']);
 Route::get('register', [AuthController::class, 'register']);
@@ -50,6 +50,9 @@ Route::get('edit/{slug}',[AdminController::class,'preEdit_article']);
 Route::post('edit/{slug}',[AdminController::class,'edit_article']);
 Route::get('delete/{id}',[AdminController::class,'delete_article']);
 Route::get('contact',[AdminController::class,'contact']);
+Route::post('contact',[AdminController::class,'send_email']);
+
+Route::get('product',[HomeController::class,'product']);
 
 
 

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('asset/plugins/OwlCarousel2-2.2.1/owl.theme.default.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('asset/plugins/OwlCarousel2-2.2.1/animate.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('asset/plugins/slick-1.8.0/slick.css')}}">
-    <!--link rel="stylesheet" type="text/css" href="{{asset('asset/plugins/jquery-ui-1.12.1.custom/jquery-ui.css')}}"-->
+    <link rel="stylesheet" type="text/css" href="{{asset('asset/plugins/jquery-ui-1.12.1.custom/jquery-ui.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/main_styles.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/responsive.css')}}">
 
@@ -38,13 +38,9 @@
     <script src="{{asset('asset/plugins/slick-1.8.0/slick.js')}}"></script>
     <script src="{{asset('asset/plugins/easing/easing.js')}}"></script>
     <script src="{{asset('asset/plugins/parallax-js-master/parallax.min.js')}}"></script>
-    <script src="{{asset('asset/js/custom.js')}}"></script>
     <script src="{{asset('asset/plugins/Isotope/isotope.pkgd.min.js')}}"></script>
     <script src="{{asset('asset/plugins/jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
-    <script src="{{asset('asset/js/shop_custom.js')}}"></script>
-    <script src="{{asset('asset/js/product_custom.js')}}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-    <script src="{{asset('asset/js/contact_custom.js')}}"></script>
+    @yield('script_content')
 
 
 

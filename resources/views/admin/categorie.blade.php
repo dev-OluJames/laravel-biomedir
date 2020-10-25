@@ -40,8 +40,9 @@
     </div>
 </div>
 <!-- /row -->
-
-</div>
 <!-- /container -->
 </div>
 @endsection('content')
+@section('script_content')
+<script src="{{asset('asset/js/shop_custom.js')}}"></script>
+@endsection('script_content')

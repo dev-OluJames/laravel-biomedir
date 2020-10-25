@@ -17,19 +17,28 @@
 </div>
 <div class="shop">
     <div class="container">
- <div class="navbar bg-blue breadcrumb-bar ">
-      <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-               <li class="breadcrumb-item"><a href="{{url('index')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{url('categories')}}">Equipements</a></li>
+        <nav class="breadcrumb breadcrumb_type5" aria-label="Breadcrumb">
+            <ol class="breadcrumb__list r-list">
+                <li class="breadcrumb__group">
+                    <a href="{{url('index')}}" class="breadcrumb__point r-link">Home</a>
+                    <span class="breadcrumb__divider" aria-hidden="true">›</span>
+                </li>
+                <li class="breadcrumb__group">
+                    <a href="{{url('categories')}}" class="breadcrumb__point r-link">Equipements</a>
+                    <span class="breadcrumb__divider" aria-hidden="true">›</span>
+                </li>
                 @if($category)
-                <li class="breadcrumb-item active"><a href="{{url('show_categories/'.$category->slug)}}">{{$category->category_name}}</a></li>
+                <li class="breadcrumb__group">
+                    <a href="{{url('show_categories/'.$category->slug)}}" class="breadcrumb__point r-link">{{$category->category_name}}</a>
+                    <span class="breadcrumb__divider" aria-hidden="true">›</span>
+                </li>
                 @endif
-                <li class="breadcrumb-item active" aria-current="page">{{$data[0]->category_name}}</li>
-          </ol>
-      </nav>
-</div>
-@if(Auth::check() and ($aUser['user_type']=='admin' or $aUser['user_type']=='super_admin') and $aUser['user_state']=='actif')
+                <li class="breadcrumb__group">
+                    <span class="breadcrumb__point" aria-current="page">{{$data[0]->category_name}}</span>
+                </li>
+            </ol>
+        </nav>
+        @if(Auth::check() and ($aUser['user_type']=='admin' or $aUser['user_type']=='super_admin') and $aUser['user_state']=='actif')
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
                     <div class="contact_form_container">
@@ -37,14 +46,14 @@
                             {{ csrf_field() }}
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="">
                                             <div class="contact_form_title">Modifier la catégorie: {{$data[0]->category_name}} </div>
                                             <p>
-                                                Modifier le nom ,l'image et l'Equipement auquel appartien cette Catégorie de cette catégorie d'article. Si l'Equipement
-                                                ne figurent pas dans la liste déroulante veuillez l'ajouter <a href={{url('add_categories')}}>ici</a>
+                                                Modifier le nom ,l'image et l'Equipement auquel appartien cette Catégorie d'article. Si l'Equipement
+                                                ne figurent pas dans la liste déroulante veuillez l'ajouter <a href={{url('add_categories')}}> ici</a>
                                             </p>
                                         </div>
-                                        <div class="col-md-44">
+                                        <div class="col-44">
                                             <img src="{{asset('asset/images/'. $data[0]->category_icon )}}" alt="..." class="img-thumbnail" height="200" width="200"><br><br>
                                         </div>
                                     </div>
@@ -105,18 +114,18 @@
                         <div class="sidebar_title">Categories</div>
                         <ul class="sidebar_categories">
                             @foreach($listCateg as $item)
-                            <li><a href="#">{{$item->category_name}}</a></li>
+                            <li>
+                                <a href="#{{$item->slug}}" data-toggle="collapse" aria-expanded="true">
+                                    {{$item->category_name}} &rsaquo;</a>
+
+                                <ul class="collapse list-unstyled" id="{{$item->slug}}">
+                                    @foreach(App\Models\Categorie::find($item->id)->child as $sub_category)
+                                    <li><a href="{{url('show_categories/'.$sub_category->slug)}}" style="color: #0e8ce4">{{$sub_category->category_name}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             @endforeach
                         </ul>
-                    </div>
-                    <div class="sidebar_section filter_by_section">
-                        <div class="sidebar_title">Filter By</div>
-                        <div class="sidebar_subtitle">Price</div>
-                        <div class="filter_price">
-                            <div id="slider-range" class="slider_range"></div>
-                            <p>Range: </p>
-                            <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
-                        </div>
                     </div>
                 </div>
 
@@ -174,144 +183,21 @@
                         </div>
                         @endforeach
                     </div>
+                <!-- Shop Page Navigation -->
 
-                    <!-- Shop Page Navigation -->
-
-                    <div class="shop_page_nav d-flex flex-row">
-                        <div class="page_prev d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-left"></i></div>
-                        <ul class="page_nav d-flex flex-row">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">...</a></li>
-                            <li><a href="#">21</a></li>
-                        </ul>
-                        <div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>
-                    </div>
-
-                </div>
-
+                {{$items->links('vendor.pagination.custom')}}
+                    <style>
+                         .w-5{
+                              display: none;
+                                        }
+                    </style>
+              </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Recently Viewed -->
-
-<div class="viewed">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="viewed_title_container">
-                    <h3 class="viewed_title">Recently Viewed</h3>
-                    <div class="viewed_nav_container">
-                        <div class="viewed_nav viewed_prev"><i class="fas fa-chevron-left"></i></div>
-                        <div class="viewed_nav viewed_next"><i class="fas fa-chevron-right"></i></div>
-                    </div>
-                </div>
-
-                <div class="viewed_slider_container">
-
-                    <!-- Recently Viewed Slider -->
-
-                    <div class="owl-carousel owl-theme viewed_slider">
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="images/view_1.jpg" alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$225<span>$300</span></div>
-                                    <div class="viewed_name"><a href="#">Beoplay H7</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="images/view_2.jpg" alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$379</div>
-                                    <div class="viewed_name"><a href="#">LUNA Smartphone</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="images/view_3.jpg" alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$225</div>
-                                    <div class="viewed_name"><a href="#">Samsung J730F...</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="images/view_4.jpg" alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$379</div>
-                                    <div class="viewed_name"><a href="#">Huawei MediaPad...</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="images/view_5.jpg" alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$225<span>$300</span></div>
-                                    <div class="viewed_name"><a href="#">Sony PS4 Slim</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="images/view_6.jpg" alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$375</div>
-                                    <div class="viewed_name"><a href="#">Speedlink...</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{{View::make('most_viewed')}}
 </div>
 </div>
 @elseif(count($sub_categ)!=0)
@@ -361,3 +247,6 @@
 </div>
 @endif
 @endsection('content')
+@section('script_content')
+<script src="{{asset('asset/js/shop_custom.js')}}"></script>
+@endsection('script_content')

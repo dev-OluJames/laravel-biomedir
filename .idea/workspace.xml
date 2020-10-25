@@ -1,7 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="569b2977-2033-4154-bc75-d1576b96fc4f" name="Default Changelist" comment="" />
+    <list default="true" id="569b2977-2033-4154-bc75-d1576b96fc4f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/ContactMail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Contact.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_18_121300_add_view_to_articles_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_18_151801_add_default_value_to_view_and_trend_in_articles_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_22_172032_add_medweek_to_articles.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602885990.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602887638.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602888348.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602889786.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602937179.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602937621.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602938012.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602938249.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602938549.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602938566.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602938759.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11602942191.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603037877.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603038222.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603039101.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603046133.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603046629.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603047146.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603047807.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603438013.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603438457.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603444294.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603444952.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603470820.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603471954.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603472202.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603472466.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603472686.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603474402.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603474555.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603528396.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603528865.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603529235.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603530136.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image11603530686.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21602885990.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21602889786.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21602937179.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21602937621.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21602938012.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21602938249.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21602938549.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21602938566.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21602938759.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603037877.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603038222.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603046133.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603046629.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603046773.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603047146.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603047807.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603438457.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603469720.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603470797.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603471954.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603472227.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603472686.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603474402.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603474555.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603474642.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603528396.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603528865.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603529235.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603530136.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image21603530686.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31602885990.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31602937179.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31602938012.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31602938249.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31602938549.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31602938566.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31602938759.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31603037877.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31603038222.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31603046133.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31603047146.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31603047807.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31603444294.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31603469995.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31603474555.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31603528396.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31603528865.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/article_image31603530136.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mail.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/most_viewed.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/product.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/bootstrap-4.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/custom.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/default.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/semantic-ui.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/simple-bootstrap-4.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/simple-default.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/simple-tailwind.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/tailwind.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/styles/blog_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset/styles/blog_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/styles/bootstrap4/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset/styles/bootstrap4/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/styles/contact_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset/styles/contact_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/styles/main_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset/styles/main_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/styles/shop_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset/styles/shop_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/addarticle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/addarticle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/categorie.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categorie.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/show_article.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/show_article.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/show_categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/show_categories.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/contact.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +147,9 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -150,17 +274,22 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1iWUshtfj49pgckNaj45sqxKfdc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/asset/styles" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -195,12 +324,25 @@
       <workItem from="1602436130646" duration="19537000" />
       <workItem from="1602568443502" duration="42368000" />
       <workItem from="1602659956310" duration="67473000" />
-      <workItem from="1602832540488" duration="5615000" />
+      <workItem from="1602832540488" duration="24509000" />
+      <workItem from="1602925752188" duration="11223000" />
+      <workItem from="1602951486970" duration="12537000" />
+      <workItem from="1603040880264" duration="1187000" />
+      <workItem from="1603042828580" duration="4110000" />
+      <workItem from="1603352940681" duration="883000" />
+      <workItem from="1603378634807" duration="7943000" />
+      <workItem from="1603435058121" duration="4259000" />
+      <workItem from="1603469171923" duration="8653000" />
+      <workItem from="1603525897277" duration="15117000" />
+      <workItem from="1603644865682" duration="4892000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="232" y="44" key="#Inspections" timestamp="1602245179261">
@@ -227,17 +369,21 @@
       <screen x="0" y="0" width="1280" height="770" />
     </state>
     <state x="444" y="4" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0/0.0.1280.770@0.0.1280.770" timestamp="1602697591073" />
-    <state x="141" y="28" key="SettingsEditor" timestamp="1602773558336">
+    <state x="141" y="28" key="SettingsEditor" timestamp="1603435557590">
       <screen x="0" y="0" width="1280" height="770" />
     </state>
-    <state x="141" y="28" key="SettingsEditor/0.0.1280.770@0.0.1280.770" timestamp="1602773558336" />
-    <state x="336" y="210" key="com.intellij.ide.util.TipDialog" timestamp="1602832693623">
+    <state x="141" y="28" key="SettingsEditor/0.0.1280.770@0.0.1280.770" timestamp="1603435557590" />
+    <state x="336" y="210" key="com.intellij.ide.util.TipDialog" timestamp="1603644875107">
       <screen x="0" y="0" width="1280" height="770" />
     </state>
-    <state x="336" y="210" key="com.intellij.ide.util.TipDialog/0.0.1280.770@0.0.1280.770" timestamp="1602832693623" />
+    <state x="336" y="210" key="com.intellij.ide.util.TipDialog/0.0.1280.770@0.0.1280.770" timestamp="1603644875107" />
     <state x="296" y="173" key="run.anything.popup" timestamp="1602707631800">
       <screen x="0" y="0" width="1280" height="770" />
     </state>
     <state x="296" y="173" key="run.anything.popup/0.0.1280.770@0.0.1280.770" timestamp="1602707631800" />
+    <state x="303" y="91" width="672" height="678" key="search.everywhere.popup" timestamp="1603648377257">
+      <screen x="0" y="0" width="1280" height="770" />
+    </state>
+    <state x="303" y="91" width="672" height="678" key="search.everywhere.popup/0.0.1280.770@0.0.1280.770" timestamp="1603648377257" />
   </component>
 </project>

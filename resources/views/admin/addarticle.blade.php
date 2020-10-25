@@ -7,24 +7,38 @@
 <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/contact_responsive.css')}}">
 <script src="https://cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
 
-<div class="section">
+<div class="contact_form">
     <div class="container">
-        </div>
-        <div class="navbar bg-white breadcrumb-bar ">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="{{url('categories')}}">Equipements</a></li>
-                    @if(empty($category))
-                    <li class="breadcrumb-item active" ><a href="{{url('show_categories/'.$sub_category[0]->slug)}}">{{$sub_category[0]->category_name}}</a></li>
-                    @else
-                    <li class="breadcrumb-item active"><a href="{{url('show_categories/'.$category->slug)}}">{{$category->category_name}}</a></li>
-                    <li class="breadcrumb-item active" ><a href="{{url('show_categories/'.$sub_category[0]->slug)}}">{{$sub_category[0]->category_name}}</a></li>
-                    @endif
-                    <li class="breadcrumb-item active" aria-current="page">Nouveau Article</li>
-                </ol>
-            </nav>
-        </div>
+        <nav class="breadcrumb breadcrumb_type5" aria-label="Breadcrumb">
+            <ol class="breadcrumb__list r-list">
+                <li class="breadcrumb__group">
+                    <a href="{{url('index')}}" class="breadcrumb__point r-link">Home</a>
+                    <span class="breadcrumb__divider" aria-hidden="true">›</span>
+                </li>
+                <li class="breadcrumb__group">
+                    <a href="{{url('categories')}}" class="breadcrumb__point r-link">Equipements</a>
+                    <span class="breadcrumb__divider" aria-hidden="true">›</span>
+                </li>
+                @if(empty($category))
+                <li class="breadcrumb__group">
+                    <a href="{{url('show_categories/'.$sub_category[0]->slug)}}" class="breadcrumb__point r-link">{{$sub_category[0]->category_name}}</a>
+                    <span class="breadcrumb__divider" aria-hidden="true">›</span>
+                </li>
+                @else
+                <li class="breadcrumb__group">
+                    <a href="{{url('show_categories/'.$category->slug)}}" class="breadcrumb__point r-link">{{$category->category_name}}</a>
+                    <span class="breadcrumb__divider" aria-hidden="true">›</span>
+                </li>
+                <li class="breadcrumb__group">
+                    <a href="{{url('show_categories/'.$sub_category[0]->slug)}}" class="breadcrumb__point r-link">{{$sub_category[0]->category_name}}</a>
+                    <span class="breadcrumb__divider" aria-hidden="true">›</span>
+                </li>
+                @endif
+                <li class="breadcrumb__group">
+                    <span class="breadcrumb__point" aria-current="page">Nouveau Article</span>
+                </li>
+            </ol>
+        </nav>
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="contact_form_container">
@@ -59,9 +73,7 @@
                             <!--span >Appliquer un pourcentage</span-->
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="article_available" checked>
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Disponible
-                                </label>
+                                <label class="form-check-label" for="defaultCheck1"> Disponible </label>
                             </div>
                             <select id="inputState" class="form-control  input_field" name="categorie_id">
                                 <option selected >{{$sub_category[0]->category_name}}</option>
@@ -84,9 +96,38 @@
                         <script>
                             CKEDITOR.replace( 'article_description' );
                         </script>
-                        <div class="form-check ml-3">
-                            <input class="form-check-input" name="article_version" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">New Version</label>
+
+                        <div class="row">
+                            <div class="form-check col-md-3 ml-4 ">
+                                <br><br>
+                                @if($article->article_version)
+                                <input class="form-check-input" name="article_version" type="checkbox"  id="defaultCheck1" checked>
+                                @else
+                                <input class="form-check-input" name="article_version" type="checkbox"  id="defaultCheck1">
+                                @endif
+                                <label class="form-check-label" for="defaultCheck1">Nouvelle Version</label>
+                                <br><br>
+                            </div>
+                            <div class="form-check col-md-3 ">
+                                <br><br>
+                                @if($article->trends)
+                                <input class="form-check-input" name="trends" type="checkbox"  id="defaultCheck2" checked>
+                                @else
+                                <input class="form-check-input" name="trends" type="checkbox"  id="defaultCheck2">
+                                @endif
+                                <label class="form-check-label" for="defaultCheck1">Vogue</label>
+                                <br><br>
+                            </div>
+                            <div class="form-check col-md-3 ">
+                                <br><br>
+                                @if($article->medweek)
+                                <input class="form-check-input" name="medweek" type="checkbox"  id="defaultCheck2" checked>
+                                @else
+                                <input class="form-check-input" name="medweek" type="checkbox"  id="defaultCheck2">
+                                @endif
+                                <label class="form-check-label" for="defaultCheck1">Medir Week</label>
+                                <br><br>
+                            </div>
                         </div>
 
                         <div class="row">
