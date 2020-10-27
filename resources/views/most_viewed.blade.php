@@ -15,10 +15,8 @@
                 <div class="viewed_slider_container">
 
                     <!-- Recently Viewed Slider -->
-
                     <div class="owl-carousel owl-theme viewed_slider">
-
-                        <!-- Recently Viewed Item -->
+                      <!-- Recently Viewed Item -->
                         @foreach($recent as $item)
                         <div class="owl-item ">
                             @if($item->article_promotion != 0)
@@ -26,11 +24,15 @@
                                 @elseif($item->article_version)
                                 <div class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
                                     @else
-                                    <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                                    <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center " height="150px">
                                         @endif
                                         <div class="viewed_image"><img src="{{asset('asset/images/'.$item->article_image1)}}" alt="" width="115" height="115"></div>
                                         <div class="viewed_content text-center">
+                                            @if(strlen($item->article_name) < 21 and strlen($item->article_model) < 15)
+                                            <div class="viewed_name"><a href="{{url('show_article/'.$item->slug)}}">{{$item->article_name}}<br><br>{{$item->article_model}}</a></div>
+                                            @else
                                             <div class="viewed_name"><a href="{{url('show_article/'.$item->slug)}}">{{$item->article_name}}<br>{{$item->article_model}}</a></div>
+                                            @endif
                                         </div>
                                         <ul class="item_marks">
                                             <li class="item_mark item_discount">{{$item->article_promotion}}</li>
