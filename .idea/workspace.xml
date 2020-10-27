@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="569b2977-2033-4154-bc75-d1576b96fc4f" name="Default Changelist" comment="" />
+    <list default="true" id="569b2977-2033-4154-bc75-d1576b96fc4f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_08_162853_create_articles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_163237_create_articles_table.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -213,7 +215,7 @@
       <workItem from="1603644865682" duration="10682000" />
       <workItem from="1603697077185" duration="5140000" />
       <workItem from="1603731220683" duration="10920000" />
-      <workItem from="1603796608350" duration="20546000" />
+      <workItem from="1603796608350" duration="21267000" />
     </task>
     <servers />
   </component>
