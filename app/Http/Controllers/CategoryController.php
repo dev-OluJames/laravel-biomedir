@@ -17,7 +17,7 @@ class CategoryController extends Controller
         ]);
 
         $category = new Categorie;
-        $results = DB::select('select * from categories where category_name = :id', ['id' => $request->categorie_id]);
+        $results = DB::table('categories')->where('category_name','=',$request->categorie_id);
 
         if(!empty($results)){
             $category->categorie_id=$results[0]->id;
