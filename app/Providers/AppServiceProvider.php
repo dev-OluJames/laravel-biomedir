@@ -38,6 +38,22 @@ class AppServiceProvider extends ServiceProvider
             $view->with('aUser', $user );
         });
 
+        $categories = Categorie::all();
+        View::share('allCateg', $categories);
+
+        $data = DB::table('categories')->where('categorie_id', null)->get();
+        View::share('listCateg', $data);
+
+        $subcateg = DB::table('categories')->where('categorie_id', "!=",null)->get();
+        View::share('subCateg', $subcateg);
+
+        $recent_view = DB::table('articles')
+            ->leftJoin('categories','articles.categorie_id','=','categories.id')
+            ->select('articles.*', 'categories.category_name')
+            ->orderBy('view','desc')->limit(10)
+            ->get();
+        View::share('recent',$recent_view);
+
 
 
     }
