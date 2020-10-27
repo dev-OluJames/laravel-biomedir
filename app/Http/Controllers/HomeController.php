@@ -9,13 +9,32 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function index(){
-        //$articles = Article::all();
-        $articles = DB::table('articles')
-            ->leftJoin('categories','articles.categorie_id','=','categories.id')
-            ->select('articles.*', 'categories.category_name')
+        $statement = DB::table('articles')
+            ->leftJoin('categories as c','articles.categorie_id','=','c.id')
+            ;
+
+
+        $articles = $statement
+            ->select('articles.*', 'c.category_name')
             ->get();
 
-        return view('index',['articles'=>$articles]);
+        $labo = $this->getSelect('Laboratoire',8);
+
+        $chirurgie = $this->getSelect('Chirurgie');
+
+        $imagerie = $this->getSelect('Imagerie');
+
+        $orl = $this->getSelect('Orl');
+
+        $autres = $this->getSelect('Equipements et Accessoires'.'and'.' c2.category_name'.'='.'Hygiène et Désinfection');
+
+
+        return view('index',['articles'=>$articles,
+                                    'labo'=>$labo,
+                                    'chirurgie'=>$chirurgie,
+                                    'imagerie'=>$imagerie,
+                                    'orl'=>$orl,
+                                    'autres'=>$autres]);
     }
 
     public function product(){
@@ -25,5 +44,24 @@ class HomeController extends Controller
             ->paginate(10);;
 
         return view('product',['articles'=>$articles]);
+    }
+
+    private function getSelect($categ_name,$limit=null)
+    {
+       $statement = DB::table('articles')
+            ->leftJoin('categories as c', 'articles.categorie_id', '=', 'c.id')
+            ->leftJoin('categories as c2', 'c.categorie_id', '=', 'c2.id')
+            ->where('c2.category_name', '=', $categ_name)
+            ->orderBy('created_at')
+            ->select('articles.*', 'c.category_name', 'c2.category_name');
+       if($limit != null){
+           return $statement
+               ->limit($limit)
+               ->get();
+       }
+       else{
+           return $statement
+               ->get();
+       }
     }
 }

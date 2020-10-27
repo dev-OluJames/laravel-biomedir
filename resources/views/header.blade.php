@@ -130,12 +130,7 @@
                                 <ul class="standard_dropdown main_nav_dropdown">
                                     <li><a href={{url('categories')}}>Catalogue<i class="fas fa-chevron-down"></i></a></li>
                                     <li class="hassubs">
-                                        <a href="#">Articles<i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            @foreach($listCateg as $item)
-                                                <li><a href="{{url('show_categories/'.$item->slug)}}">{{$item->category_name}}<i class="fas fa-chevron-down"></i></a></li>
-                                            @endforeach
-                                        </ul>
+                                        <a href="{{url('product')}}">Articles</a>
                                     </li>
                                     <li class="hassubs">
                                         <a href="#">Installations</i></a>

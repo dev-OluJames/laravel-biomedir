@@ -63,15 +63,11 @@
                 <div class="footer_column">
                     <div class="footer_title">Find it Fast</div>
                     <ul class="footer_list">
-                        <li><a href="#">Computers & Laptops</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Smartphones & Tablets</a></li>
-                        <li><a href="#">TV & Audio</a></li>
-                    </ul>
-                    <div class="footer_subtitle">Gadgets</div>
-                    <ul class="footer_list">
-                        <li><a href="#">Car Electronics</a></li>
+                        <li><a href="#">Hématologie</a></li>
+                        <li><a href="#">Biochimie</a></li>
+                        <li><a href="#">Immunologie-seriologie</a></li>
+                        <li><a href="#">Consomables Laboratoire</a></li>
+                        <li><a href="#">Autres</a></li>
                     </ul>
                 </div>
             </div>
@@ -79,11 +75,11 @@
             <div class="col-lg-2">
                 <div class="footer_column">
                     <ul class="footer_list footer_list_2">
-                        <li><a href="#">Video Games & Consoles</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Computers & Laptops</a></li>
+                        <li><a href="#">Chirurgie</a></li>
+                        <li><a href="#">Gynécologie-Obstétrique</a></li>
+                        <li><a href="#">Equipements médicaux</a></li>
+                        <li><a href="#">Imageries</a></li>
+                        <li><a href="#">Orl</a></li>
                     </ul>
                 </div>
             </div>
@@ -93,10 +89,8 @@
                     <div class="footer_title">Customer Care</div>
                     <ul class="footer_list">
                         <li><a href="#">My Account</a></li>
-                        <li><a href="#">Order Tracking</a></li>
                         <li><a href="#">Wish List</a></li>
                         <li><a href="#">Customer Services</a></li>
-                        <li><a href="#">Returns / Exchange</a></li>
                         <li><a href="#">FAQs</a></li>
                         <li><a href="#">Product Support</a></li>
                     </ul>
@@ -116,7 +110,7 @@
 
                 <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
                     <div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | made by <a href="#" target="_blank">Bright Technology/Togo</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
                     <div class="logos ml-sm-auto">

@@ -16,8 +16,7 @@
                             <ul class="sidebar_categories">
                                 @foreach($listCateg as $item)
                                 <li>
-                                    <a href="#{{$item->slug}}" data-toggle="collapse" aria-expanded="true">
-                                        {{$item->category_name}} &rsaquo;</a>
+                                    <a href="#{{$item->slug}}" data-toggle="collapse" aria-expanded="true">&rsaquo;  {{$item->category_name}}</a>
 
                                     <ul class="collapse list-unstyled" id="{{$item->slug}}">
                                         @foreach(App\Models\Categorie::find($item->id)->child as $sub_category)

@@ -73,7 +73,7 @@
                                                 <option selected>{{$category->category_name}}</option>
                                         @else
                                            <select name="categorie_id" id="inputState" class="form-control" readonly>
-                                           <option selected>choose....</option>
+                                           <option value="none" selected>choose....</option>
                                         @endif
                                         @if($listCateg)
                                             @foreach($listCateg as $item)
@@ -116,7 +116,7 @@
                             @foreach($listCateg as $item)
                             <li>
                                 <a href="#{{$item->slug}}" data-toggle="collapse" aria-expanded="true">
-                                    {{$item->category_name}} &rsaquo;</a>
+                                    &rsaquo;  {{$item->category_name}}</a>
 
                                 <ul class="collapse list-unstyled" id="{{$item->slug}}">
                                     @foreach(App\Models\Categorie::find($item->id)->child as $sub_category)
