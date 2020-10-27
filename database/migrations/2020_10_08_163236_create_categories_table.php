@@ -21,7 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->unique("category_name","category_name_index");
             $table->foreignId('categorie_id')->nullable()->constrained('categories');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+
         });
     }
 
