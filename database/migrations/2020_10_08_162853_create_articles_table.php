@@ -22,7 +22,7 @@ class CreateArticlesTable extends Migration
             $table->string('article_image3')->nullable();
             $table->string('article_model');
             $table->string('article_details')->nullable();
-            $table->integer('article_promotion')->nullable();
+            $table->integer('article_promotion')->unsigned()->nullable();
             $table->boolean('article_version')->nullable();
             $table->boolean('article_available')->nullable();
             $table->string('slug')->nullable();
