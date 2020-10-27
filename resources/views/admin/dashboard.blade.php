@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-xl-4 col-md-6">
                         <div class="card text-white bg-info mb-4">
-                            <div class="card-header"  style="color: white; font-size: 30px">Admin +</div>
+                            <div class="card-header"  style="color: white; font-size: 30px"><a href="{{url('admins')}}" style="color: white; font-size: 30px" >Admin +</a></div>
                             <div class="card-body">
                                 <h5 class="card-title">Gestion des Utilisateurs</h5>
                                 <p class="card-text" style="color: white">Dans cet espace vous pouvez gérer les Utilisateurs ayant accès.

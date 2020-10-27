@@ -58,7 +58,7 @@ Route::get('product',[HomeController::class,'product']);
 
 Route::view('admins','admin.admins');
 
-Route::get('admins',[AdminController::class,'admins']);
+Route::get('admins',[AdminController::class,'admins'])->middleware('user_protct_page');
 
 
 
