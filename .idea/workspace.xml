@@ -2,7 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="569b2977-2033-4154-bc75-d1576b96fc4f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_08_162853_create_articles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_163237_create_articles_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/mindray.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/asset/images/mindray.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_08_163236_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_163236_create_categories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_08_163237_create_articles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_162853_create_articles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_08_172646_create_favories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_172646_create_favories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_16_103103_create_contacts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_16_103103_create_contacts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-brands-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-brands-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-regular-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-regular-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-regular-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-regular-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-regular-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-solid-900.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-solid-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/plugins/fontawesome-free-5.0.1/webfonts/fa-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset/styles/main_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset/styles/main_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/show_article.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/show_article.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,20 +193,20 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/asset/styles" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/asset/images" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\biomedir_togo\resources\views" />
+      <recent name="C:\wamp64\www\biomedir_togo\public\asset\styles" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\biomedir\public\asset\images" />
       <recent name="C:\wamp64\www\biomedir_togo\public\asset\styles" />
       <recent name="C:\wamp64\www\biomedir_togo\resources\views\admin" />
       <recent name="C:\wamp64\www\biomedir_togo\public\asset\images" />
       <recent name="C:\wamp64\www\biomedir_togo\resources\css" />
-      <recent name="C:\wamp64\www\biomedir_togo\resources\views" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\biomedir_togo\resources\views" />
-      <recent name="C:\wamp64\www\biomedir_togo\public\asset\styles" />
     </key>
   </component>
   <component name="RunManager">
@@ -215,7 +242,8 @@
       <workItem from="1603644865682" duration="10682000" />
       <workItem from="1603697077185" duration="5140000" />
       <workItem from="1603731220683" duration="10920000" />
-      <workItem from="1603796608350" duration="21267000" />
+      <workItem from="1603796608350" duration="21795000" />
+      <workItem from="1603901784215" duration="12466000" />
     </task>
     <servers />
   </component>

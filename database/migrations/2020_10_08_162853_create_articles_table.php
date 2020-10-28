@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateArticlesTable extends Migration
@@ -22,7 +21,7 @@ class CreateArticlesTable extends Migration
             $table->string('article_image3')->nullable();
             $table->string('article_model');
             $table->string('article_details')->nullable();
-            $table->integer('article_promotion')->unsigned()->nullable();
+            $table->integer('article_promotion')->nullable();
             $table->boolean('article_version')->nullable();
             $table->boolean('article_available')->nullable();
             $table->string('slug')->nullable();
@@ -31,7 +30,7 @@ class CreateArticlesTable extends Migration
             $table->foreignId('categorie_id')->constrained('categories');
             $table->unique(array('article_name', 'article_model'));
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
 
         });
     }
@@ -43,8 +42,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('articles');
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

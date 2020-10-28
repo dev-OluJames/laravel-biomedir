@@ -3,15 +3,31 @@
 {{View::make('header')}}
 <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/product_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/product_responsive.css')}}">
+<meta name="description" content="{{$article->article_name}} {{$article->article_model}}">
+<meta property="og:image" content="{{asset('asset/images/'.$article->article_image1)}}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 <!-- Single Product -->
 
 <div class="single_product">
+
     <div class="container">
         @if(Auth::check() and ($aUser['user_type']=='admin' or $aUser['user_type']=='super_admin') and $aUser['user_state']=='actif')
             <button type="button" class="btn btn-outline-primary"><a href={{url('edit/'.$article->slug) }}>Modifier</a></button>
             <button type="button" class="btn btn-outline-danger"><a onclick="return confirm('Are you sure you want to delete this item?');" style="color: red" href={{url('delete/'.$article->id) }}>Delete</a></button>
         <br><br>
         @endif
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-5">
+                <div class="social-buttons" style="padding-bottom: 20px">
+                    <a href="https://www.facebook.com/sharer.php?u=http://biomedir.herokuapp.com/show_article/{{$article->slug}}"><i class="fab fa-facebook-f" style="color: #ffffff"></i></a>
+                    <a href="#"><i class="fab fa-twitter" style="color: #ffffff"></i></a>
+                    <a href="#"><i class="fab fa-instagram"style="color: #ffffff"></i></a>
+                    <a href="whatsapp://send?text={{$article->article_details}} http://biomedir.herokuapp.com/show_article/{{$article->slug}}"><i class="fab fa-whatsapp" style="color: #ffffff"></i></a>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <!-- Images -->
             <div class="col-lg-2 order-lg-1 order-2">
