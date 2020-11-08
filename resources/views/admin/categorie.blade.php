@@ -3,7 +3,7 @@
 {{View::make('header')}}
 <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/blog_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/blog_responsive.css')}}">
-
+@section('title','catalogue')
 <!-- Home -->
 <div class="home">
     <div class="home_background parallax-window" data-parallax="scroll" data-image-src="{{asset('asset/images/shop_background.jpg')}}"></div>
@@ -16,7 +16,8 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                @if(($aUser['user_type']=='admin' or $aUser['user_type']=='super_admin') and $aUser['user_state']=='actif')
+
+                @if((Auth::check() and $aUser['user_type']=='admin' or $aUser['user_type']=='super_admin') and $aUser['user_state']=='actif')
                 <button type="button" class=" btn btn-primary btn-lg btn-block"><a href="{{url('add_categories')}}" style="color: whitesmoke">Ajouter Une Catégorie</a></button>
                 <br><br>
                 @endif
@@ -34,7 +35,7 @@
             </div>
 
         </div>
-        @if(($aUser['user_type']=='admin' or $aUser['user_type']=='super_admin') and $aUser['user_state']=='actif')
+        @if((Auth::check() and $aUser['user_type']=='admin' or $aUser['user_type']=='super_admin') and $aUser['user_state']=='actif')
         <button type="button" class=" btn btn-primary btn-lg btn-block"><a href="{{url('add_categories')}}" style="color: whitesmoke">Ajouter Une Catégorie</a></button>
         @endif
     </div>

@@ -10,8 +10,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col d-flex flex-row">
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('asset/images/phone.png')}}" alt=""></div>+38 068 005 3570</div>
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('asset/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('asset/images/phone.png')}}" alt=""></div>+229 90 94 33 35</div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('asset/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">info@biomedir.com</a></div>
                         <div class="top_bar_content ml-auto">
                             @guest
                             <div class="top_bar_user">
@@ -20,6 +20,23 @@
                                     <div><a href={{url('login')}}>Sign in</a></div>
                             </div>
                             @endguest
+                            @auth
+                            <div class="top_bar_user">
+                                <div class="user_icon"><img src="{{asset('asset/images/user.svg')}}" alt=""></div>
+                                <div><a href="{{url('dashboard')}}">{{$aUser->name}}</a></div>
+                                <div>
+                                    <ul class="standard_dropdown main_nav_dropdown">
+                                        <li class="hassubs">
+                                            <div class="cart_text">Mon Compte</div>
+                                            <ul>
+                                                <li><a href="{{url('account/'.$aUser->name.'/'.$aUser->id)}}">Account<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="{{url('logout')}}">Logout<i class="fas fa-chevron-down"></i></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            @endauth
                         </div>
                     </div>
                 </div>
@@ -63,30 +80,26 @@
                             </div>
                         </div>
                     </div>
-                    @auth
                     <!-- Wishlist -->
                     <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                         <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                             <div class="wishlist d-flex flex-row align-items-center justify-content-end">
                                 <div class="wishlist_icon"><img src="{{asset('asset/images/heart.png')}}" alt=""></div>
+                                @auth
                                 <div class="wishlist_content">
                                     <div class="wishlist_text"><a href="#">Wishlist</a></div>
-                                    <div class="wishlist_count">115</div>
+                                    <div class="wishlist_count">0</div>
+                                </div>
+                                @endauth
+                                @guest
+                                <div class="wishlist_content">
+                                    <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                                    <div class="wishlist_count">0</div>
                                 </div>
                             </div>
-                            @auth
-                            <!-- Cart -->
-                            <div class="cart">
-                                <div class="cart_container d-flex flex-row align-items-center justify-content-end">
-                                    <div class="cart_content">
-                                        <div class="cart_text"><a href="#">{{$aUser->name}}</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endauth
+                            @endguest
                         </div>
                     </div>
-                    @endauth
                 </div>
             </div>
         </div>
@@ -150,7 +163,6 @@
                                             <li><a href="product.html">Promotions<i class="fas fa-chevron-down"></i></a></li>
                                             <li><a href="blog.html">Carrière<i class="fas fa-chevron-down"></i></a></li>
                                             <li><a href="blog_single.html">Financement<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
                                         </ul>
                                     </li>
                                     <li><a href="{{url('about')}}">A Propos<i class="fas fa-chevron-down"></i></a></li>
@@ -190,26 +202,47 @@
                                 </form>
                             </div>
                             <ul class="page_menu_nav">
+                                @auth
+                                <li class="page_menu_item has-children">
+                                    <a href="{{url('dashboard')}}">{{$aUser->name}}<i class="fa fa-angle-down"></i></a>
+                                    <ul class="page_menu_selection">
+                                        <li class="page_menu_item"><a href="{{url('dashboard')}}">Page<i class="fa fa-angle-down"></i></a></li>
+                                        <li class="page_menu_item"><a href="{{url('account/'.$aUser->name.'/'.$aUser->id)}}">Mon Compte</a></li>
+                                        <li class="page_menu_item"><a href="{{url('logout')}}">Logout</a></li>
+                                    </ul>
+                                </li>
+                                @endauth
                                 <li class="page_menu_item">
                                     <a href="{{url('index')}}">Home<i class="fa fa-angle-down"></i></a>
                                 </li>
-                                @foreach($listCateg as $item)
+                                <li class="page_menu_item">
+                                    <a href="{{url('categories')}}">Catalogue<i class="fa fa-angle-down"></i></a>
+                                </li>
+                                <li class="page_menu_item">
+                                    <a href="{{url('product')}}">Articles<i class="fa fa-angle-down"></i></a>
+                                </li>
+                                <li class="page_menu_item">
+                                    <a href="{{url('index')}}">Installation<i class="fa fa-angle-down"></i></a>
+                                </li>
+                                <li class="page_menu_item">
+                                    <a href="{{url('index')}}">Agences<i class="fa fa-angle-down"></i></a>
+                                </li>
                                 <li class="page_menu_item has-children">
-                                    <a href="{{url('show_categories/'.$item->slug)}}">{{$item->category_name}}<i class="fa fa-angle-down"></i></a>
+                                    <a href="{{url('show_categories/'.$item->slug)}}">Pages<i class="fa fa-angle-down"></i></a>
                                     <ul class="page_menu_selection">
-                                        @foreach(App\Models\Categorie::find($item->id)->child as $sub_category)
-                                        <li class="page_menu_item"><a href="{{url('show_categories/'.$sub_category->slug)}}">{{$sub_category->category_name}}</a></li>
-                                        @endforeach
+                                        <li class="page_menu_item"><a href="{{url('blog')}}">Blog</a></li>
+                                        <li class="page_menu_item"><a href="{{url('promotion')}}">promotion</a></li>
+                                        <li class="page_menu_item"><a href="{{url('carrière/')}}">Carrière</a></li>
+                                        <li class="page_menu_item"><a href="{{url('financement/')}}">Financement</a></li>
                                     </ul>
                                 </li>
-                                @endforeach
                                 <li class="page_menu_item"><a href="{{url('about')}}">About<i class="fa fa-angle-down"></i></a></li>
                                 <li class="page_menu_item"><a href="{{url('contact')}}">contact<i class="fa fa-angle-down"></i></a></li>
                             </ul>
 
                             <div class="menu_contact">
-                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{asset('asset/images/phone_white.png')}}" alt=""></div>+228 90 94 33 35</div>
+                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{asset('asset/images/mail_white.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">info@biomedir.com</a></div>
                             </div>
                         </div>
                     </div>

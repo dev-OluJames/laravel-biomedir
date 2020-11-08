@@ -60,7 +60,7 @@
                             @if ($errors->has('article_model'))
                             <span class="error">{{ $errors->first('article_model') }}</span>
                             @endif
-                            <textarea id="contact_form_phone"  rows="4" class="contact_form_phone input_field" placeholder="Details" name="article_details">
+                            <textarea id="contact_form_phone" class="contact_form_phone input_field" placeholder="Details" name="article_details">
                                 {{$article->article_details}}
                             </textarea>
                             @if ($errors->has('article_details'))
@@ -69,8 +69,12 @@
                         </div>
 
                         <div class="contact_form_inputs d-flex flex-md-row flex-column justify-content-between align-items-between">
+                            @if($article->article_promotion != 0)
                             <input type="number" id="pourcentage" value="{{$article->article_promotion}}" class="contact_form_name input_field" placeholder="Appliquer un Pourcentage" required="required" name="article_promotion" >
+                            @else
+                            <input type="number" id="pourcentage" value="0" class="contact_form_name input_field" placeholder="Appliquer un Pourcentage" required="required" name="article_promotion" >
                             <!--span >Appliquer un pourcentage</span-->
+                            @endif
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="article_available" checked>
                                 <label class="form-check-label" for="defaultCheck1"> Disponible </label>

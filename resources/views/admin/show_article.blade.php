@@ -3,8 +3,13 @@
 {{View::make('header')}}
 <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/product_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/product_responsive.css')}}">
-<meta name="description" content="{{$article->article_name}} {{$article->article_model}}">
-<meta property="og:image" content="{{asset('asset/images/'.$article->article_image1)}}">
+@section('title')
+{{$article->article_name}}-{{$article->article_model}}
+@endsection('title')
+<meta property="og:title" content="{{$sub_category->category_name}} - {{$article->article_name}}\{{$article->article_model}}" />
+<meta property="og:image" itemprop="image" content="{{secure_asset('asset/images/'.$article->article_image1)}}">
+<meta property="og:image:width" content="115">
+<meta property="og:image:height" content="115">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 <!-- Single Product -->
@@ -24,7 +29,7 @@
                     <a href="https://www.facebook.com/sharer.php?u=http://biomedir.herokuapp.com/show_article/{{$article->slug}}"><i class="fab fa-facebook-f" style="color: #ffffff"></i></a>
                     <a href="#"><i class="fab fa-twitter" style="color: #ffffff"></i></a>
                     <a href="#"><i class="fab fa-instagram"style="color: #ffffff"></i></a>
-                    <a href="whatsapp://send?text={{$article->article_details}} http://biomedir.herokuapp.com/show_article/{{$article->slug}}"><i class="fab fa-whatsapp" style="color: #ffffff"></i></a>
+                    <a href="whatsapp://send?text={{$article->article_name}} {{$article->article_model}} http://biomedir.herokuapp.com/show_article/{{$article->slug}}"><i class="fab fa-whatsapp" style="color: #ffffff"></i></a>
                 </div>
             </div>
         </div>
@@ -40,7 +45,7 @@
 
             <!-- Selected Image -->
             <div class="col-lg-5 order-lg-2 order-1">
-                <div class="image_selected"><img src="{{asset('asset/images/'.$article->article_image1)}}" alt=""></div>
+                <div class="image_selected"><img src="{{asset('asset/images/'.$article->article_image1)}}" height="400" width="400"  alt=""></div>
             </div>
 
             <!-- Description -->

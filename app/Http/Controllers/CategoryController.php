@@ -7,6 +7,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use function PHPUnit\Framework\isEmpty;
 
 class CategoryController extends Controller
 {
@@ -48,18 +49,23 @@ class CategoryController extends Controller
 
     public function showCategory($slug){
         $data = DB::table('categories')->where('slug', '=', $slug)->get();
-        $category = Categorie::find($data[0]->categorie_id);
-        $parent_categ = null;
-        if($category and $category->categorie_id){
-            $parent_categ = Categorie::find($category->categorie_id);
+        if(sizeof($data) != 0){
+            $category = Categorie::find($data[0]->categorie_id);
+            $parent_categ = null;
+            if($category and $category->categorie_id){
+                $parent_categ = Categorie::find($category->categorie_id);
+            }
+            $items = DB::table('articles')->where('categorie_id', "=",$data[0]->id)
+                ->paginate(10);
+            $sub_categ = DB::table('categories')->where('categorie_id', $data[0]->id)->get();
+            return view('admin.show_categories',['data'=>$data,
+                'category'=>$category,
+                'sub_categ'=>$sub_categ,
+                'items'=>$items,'parent_categ'=>$parent_categ]);
+        }else{
+            return abort(404);
         }
-        $items = DB::table('articles')->where('categorie_id', "=",$data[0]->id)
-            ->paginate(10);
-        $sub_categ = DB::table('categories')->where('categorie_id', $data[0]->id)->get();
-        return view('admin.show_categories',['data'=>$data,
-            'category'=>$category,
-            'sub_categ'=>$sub_categ,
-            'items'=>$items,'parent_categ'=>$parent_categ]);
+
     }
 
     public function editCategory(Request $request){
@@ -90,12 +96,17 @@ class CategoryController extends Controller
 
     public function preAddSubCategory($slug){
         $data = DB::table('categories')->where('slug','=',$slug)->get();
-        $category = Categorie::find($data[0]->id);
-        $parent_categ = null;
-        if($category and $category->categorie_id){
-            $parent_categ = Categorie::find($category->categorie_id);
+        if(sizeof($data) != 0){
+            $category = Categorie::find($data[0]->id);
+            $parent_categ = null;
+            if($category and $category->categorie_id){
+                $parent_categ = Categorie::find($category->categorie_id);
+            }
+            return view('admin.add_sub_categories',['category'=>$category, 'parent_categ'=>$parent_categ]);
         }
-        return view('admin.add_sub_categories',['category'=>$category, 'parent_categ'=>$parent_categ]);
+        else{
+            return abort(404);
+        }
     }
 
     public function addSubCategory(Request $request){

@@ -352,7 +352,7 @@
                        <div class="trends_content">
                            <div class="trends_category"><a href="#">{{$item->category_name}}</a></div>
                            <div class="trends_info clearfix">
-                               <div class="trends_name"><a href="product.html">{{$item->article_name}}</a></div>
+                               <div class="trends_name"><a href="{{url('show_article/'.$item->slug)}}">{{$item->article_name}}</a></div>
                                <div class="trends_price">{{$item->article_model}}</div>
                            </div>
                        </div>
@@ -462,7 +462,7 @@
                             <ul class="clearfix">
                                 <li class="active">Chirurgie</li>
                                 <li>Equip. Médicaux</li>
-                                <li>Gynécologie & Obstétrique</li>
+                                <li>Gynéco-Obstétrique</li>
                             </ul>
                             <div class="tabs_line"><span></span></div>
                         </div>
@@ -485,7 +485,7 @@
                                                         @endif
                                                         <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{asset('asset/images/'.$item->article_image1)}}" alt="" width="115" height="115"></div>
                                                         <div class="product_content">
-                                                            <div class="product_name"><div><a href="product.html">{{$item->article_name}}<br>{{ \Illuminate\Support\Str::limit($item->article_model, 20, $end='...') }}</a></div></div>
+                                                            <div class="product_name"><div><a href="href="{{url('show_article/'.$item->slug)}}"">{{$item->article_name}}<br>{{ \Illuminate\Support\Str::limit($item->article_model, 20, $end='...') }}</a></div></div>
                                                             <div class="product_extras">
                                                                 <a href="{{url('show_article/'.$item->slug)}}"><button class="product_cart_button">Voir</button></a>
                                                             </div>
@@ -520,7 +520,42 @@
                                                         @endif
                                                         <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{asset('asset/images/'.$item->article_image1)}}" alt="" width="115" height="115"></div>
                                                         <div class="product_content">
-                                                            <div class="product_name"><div><a href="product.html">{{$item->article_name}}<br>{{ \Illuminate\Support\Str::limit($item->article_model, 20, $end='...') }}</a></div></div>
+                                                            <div class="product_name"><div><a href="{{url('show_article/'.$item->slug)}}">{{$item->article_name}}<br>{{ \Illuminate\Support\Str::limit($item->article_model, 20, $end='...') }}</a></div></div>
+                                                            <div class="product_extras">
+                                                                <a href="{{url('show_article/'.$item->slug)}}"><button class="product_cart_button">Voir</button></a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        <ul class="product_marks">
+                                                            <li class="product_mark product_discount">{{$item->article_promotion}}</li>
+                                                            <li class="product_mark product_new">new</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                @endforeach
+                                    </div>
+                                    <div class="arrivals_slider_dots_cover"></div>
+                                </div>
+                                        <!-- Product Panel -->
+                                <div class="product_panel panel">
+                                    <div class="arrivals_slider slider">
+
+                                        @foreach($articles as $item)
+                                        @if($item->category_name == 'Gynécologie-Obstétrique')
+                                        <!-- Slider Item -->
+                                        <div class="arrivals_slider_item">
+                                            <div class="border_active"></div>
+                                            @if($item->article_promotion !=0)
+                                            <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                                @elseif($item->article_version)
+                                                <div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
+                                                    @else
+                                                    <div class="product_item  d-flex flex-column align-items-center justify-content-center text-center">
+                                                        @endif
+                                                        <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{asset('asset/images/'.$item->article_image1)}}" alt="" width="115" height="115"></div>
+                                                        <div class="product_content">
+                                                            <div class="product_name"><div><a href="{{url('show_article/'.$item->slug)}}">{{$item->article_name}}<br>{{ \Illuminate\Support\Str::limit($item->article_model, 20, $end='...') }}</a></div></div>
                                                             <div class="product_extras">
                                                                 <a href="{{url('show_article/'.$item->slug)}}"><button class="product_cart_button">Voir</button></a>
                                                             </div>
@@ -538,36 +573,7 @@
                                     <div class="arrivals_slider_dots_cover"></div>
                                 </div>
 
-                                <!-- Product Panel -->
-                                <div class="product_panel panel">
-                                    <div class="arrivals_slider slider">
 
-                                        <!-- Slider Item -->
-                                        <div class="arrivals_slider_item">
-                                            <div class="border_active"></div>
-                                            <div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-                                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="asset/images/biomedir.jpg" alt=""></div>
-                                                <div class="product_content">
-                                                    <div class="product_name"><div><a href="product.html">nom article...</a></div></div>
-                                                    <div class="product_extras">
-                                                        <div class="product_color">
-                                                            <input type="radio" checked name="product_color" style="background:#b19c83">
-                                                            <input type="radio" name="product_color" style="background:#000000">
-                                                            <input type="radio" name="product_color" style="background:#999999">
-                                                        </div>
-                                                        <button class="product_cart_button">Add to Cart</button>
-                                                    </div>
-                                                </div>
-                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
-                                                <ul class="product_marks">
-                                                    <li class="product_mark product_discount">-25%</li>
-                                                    <li class="product_mark product_new">new</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="arrivals_slider_dots_cover"></div>
-                                </div>
 
                             </div>
 
@@ -631,21 +637,20 @@
                                 @else
                                  <div class="bestsellers_item ">
                                  @endif
-                                    <div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-                                        <div class="bestsellers_image"><img src="asset/images/best_1.png" alt=""></div>
-                                        <div class="bestsellers_content">
-                                            <div class="bestsellers_category"><a href="#">Headphones</a></div>
-                                            <div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a></div>
-                                            <div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                            <div class="bestsellers_price discount">$225<span>$300</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-                                    <ul class="bestsellers_marks">
-                                        <li class="bestsellers_mark bestsellers_discount">-25%</li>
-                                        <li class="bestsellers_mark bestsellers_new">new</li>
-                                    </ul>
-                                </div>
+                                     <div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
+                                         <div class="bestsellers_image"><img src="{{asset('asset/images/'.$item->article_image1)}}" alt="" width="115" height="115"></div>
+                                         <div class="bestsellers_content">
+                                             <div class="bestsellers_category"><a href="#">{{$item->category_name}}</a></div>
+                                             <div class="bestsellers_name"><a href="{{url('show_article/'.$item->slug)}}">{{$item->article_name}}<br>{{$item->article_model}}</a></div>
+                                             <div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                         </div>
+                                     </div>
+                                     <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
+                                     <ul class="bestsellers_marks">
+                                         <li class="bestsellers_mark bestsellers_discount">{{$item->article_promotion}}</li>
+                                         <li class="bestsellers_mark bestsellers_new">new</li>
+                                     </ul>
+                                 </div>
                              @endforeach
                             </div>
                         </div>
@@ -655,7 +660,7 @@
                             <!-- Best Sellers Slider -->
 
                         <div class="bestsellers_slider slider">
-                            @foreach($imagerie as $item)
+                            @foreach($orl as $item)
                             <!-- Best Sellers Item -->
                             @if($item->article_promotion !=0)
                             <div class="bestsellers_item discount">
@@ -665,22 +670,20 @@
                                  <div class="bestsellers_item ">
                               @endif
                                         <!-- Best Sellers Item -->
-                                <div class="bestsellers_item discount">
-                                    <div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-                                        <div class="bestsellers_image"><img src="asset/images/best_1.png" alt=""></div>
-                                        <div class="bestsellers_content">
-                                            <div class="bestsellers_category"><a href="#">Headphones</a></div>
-                                            <div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a></div>
-                                            <div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                            <div class="bestsellers_price discount">$225<span>$300</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-                                    <ul class="bestsellers_marks">
-                                        <li class="bestsellers_mark bestsellers_discount">-25%</li>
-                                        <li class="bestsellers_mark bestsellers_new">new</li>
-                                    </ul>
-                                </div>
+                                     <div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
+                                         <div class="bestsellers_image"><img src="{{asset('asset/images/'.$item->article_image1)}}" alt="" width="115" height="115"></div>
+                                         <div class="bestsellers_content">
+                                             <div class="bestsellers_category"><a href="#">{{$item->category_name}}</a></div>
+                                             <div class="bestsellers_name"><a href="{{url('show_article/'.$item->slug)}}">{{$item->article_name}}<br>{{$item->article_model}}</a></div>
+                                             <div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                         </div>
+                                     </div>
+                                     <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
+                                     <ul class="bestsellers_marks">
+                                         <li class="bestsellers_mark bestsellers_discount">{{$item->article_promotion}}</li>
+                                         <li class="bestsellers_mark bestsellers_new">new</li>
+                                     </ul>
+                                 </div>
                             @endforeach
                             </div>
                         </div>
@@ -690,7 +693,7 @@
                             <!-- Best Sellers Slider -->
 
                          <div class="bestsellers_slider slider">
-                             @foreach($imagerie as $item)
+                             @foreach($autres as $item)
                              <!-- Best Sellers Item -->
                              @if($item->article_promotion !=0)
                              <div class="bestsellers_item discount">
@@ -700,22 +703,20 @@
                                <div class="bestsellers_item ">
                              @endif
                                  <!-- Best Sellers Item -->
-                                <div class="bestsellers_item discount">
-                                    <div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-                                        <div class="bestsellers_image"><img src="asset/images/best_1.png" alt=""></div>
-                                        <div class="bestsellers_content">
-                                            <div class="bestsellers_category"><a href="#">Headphones</a></div>
-                                            <div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a></div>
-                                            <div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                            <div class="bestsellers_price discount">$225<span>$300</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-                                    <ul class="bestsellers_marks">
-                                        <li class="bestsellers_mark bestsellers_discount">-25%</li>
-                                        <li class="bestsellers_mark bestsellers_new">new</li>
-                                    </ul>
-                                </div>
+                                   div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
+                                   <div class="bestsellers_image"><img src="{{asset('asset/images/'.$item->article_image1)}}" alt="" width="115" height="115"></div>
+                                   <div class="bestsellers_content">
+                                       <div class="bestsellers_category"><a href="#">{{$item->category_name}}</a></div>
+                                       <div class="bestsellers_name"><a href="{{url('show_article/'.$item->slug)}}">{{$item->article_name}}<br>{{$item->article_model}}</a></div>
+                                       <div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                   </div>
+                               </div>
+                                  <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
+                                  <ul class="bestsellers_marks">
+                                      <li class="bestsellers_mark bestsellers_discount">{{$item->article_promotion}}</li>
+                                      <li class="bestsellers_mark bestsellers_new">new</li>
+                                  </ul>
+                              </div>
                               @endforeach
                             </div>
                         </div>
@@ -747,7 +748,7 @@
                             <!-- Reviews Slider Item >
                             <div class="owl-item">
                                 <div class="review d-flex flex-row align-items-start justify-content-start">
-                                    <div><div class="review_image"><img src="asset/images/review_1.jpg" alt=""></div></div>
+                                    <div><div class="review_image"><img src="asset/images/review_1.jpg" alt="" width="115" height="115"></div></div>
                                     <div class="review_content">
                                         <div class="review_name">Roberto Sanchez</div>
                                         <div class="review_rating_container">

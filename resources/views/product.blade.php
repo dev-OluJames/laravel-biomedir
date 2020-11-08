@@ -3,7 +3,7 @@
 {{View::make('header')}}
 <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/shop_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/shop_responsive.css')}}">
-
+@section('title','articles')
 <div class="shop">
     <div class="container">
         <div class="row">

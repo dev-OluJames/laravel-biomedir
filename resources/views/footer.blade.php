@@ -1,4 +1,8 @@
-
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=492536621531521&autoLogAppEvents=1"
+        nonce="Z1Wdf5T1">
+</script>
 <!-- Brands -->
 
 <div class="brands">
@@ -42,7 +46,7 @@
                         <ul>
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                            <li><a href="https://wa.me/22890611507"><i class="fab fa-whatsapp"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -73,15 +77,15 @@
                     </ul>
                 </div>
 
-            </div><div class="col-lg-2">
-                <div class="footer-widget tweets-widget">
-                    <div class="widget-title">Aimez la page</div>
-                    <div class="fb-page"
-                         data-tabs="timeline,events,messages"
-                         data-href="https://www.facebook.com/africprogres/"
-                         data-width="380"
-                         data-height="360"
-                         data-hide-cover="false"></div>
+            </div><div class="col-lg-5">
+                <div class="fb-page" data-href="https://web.facebook.com/Biomedir-Togo-116132360287713"
+                     <!--data-tabs="timeline"-->
+                     data-width="480"
+                     data-height="250"
+                     data-small-header="false"
+                     data-adapt-container-width="true"
+                     data-hide-cover="false"
+                     data-show-facepile="true">
                 </div>
             </div>
 

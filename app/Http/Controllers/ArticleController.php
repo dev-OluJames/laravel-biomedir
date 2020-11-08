@@ -43,21 +43,31 @@ class ArticleController extends Controller
 
     public function show_article($slug){
         $data = DB::table('articles')->where('slug','=', $slug)->get();
-        $article = Article::find($data[0]->id);
-        $article->view += 1;
-        $article->save();
-        $category = DB::table('categories')->where('id','=',$article->categorie_id)->get();
-        $sub_category = Categorie::find($category[0]->id);
-        return view('admin.show_article',['article'=>$article, 'sub_category'=>$sub_category]);
+        if(sizeof($data) != 0) {
+            $article = Article::find($data[0]->id);
+            $article->view += 1;
+            $article->save();
+            $category = DB::table('categories')->where('id','=',$article->categorie_id)->get();
+            $sub_category = Categorie::find($category[0]->id);
+            return view('admin.show_article',['article'=>$article, 'sub_category'=>$sub_category]);
+        }else{
+            return abort(404);
+        }
+
     }
 
     public function preEdit_article($slug){
         $data = DB::table('articles')->where('slug','=', $slug)->get();
-        $article = Article::find($data[0]->id);
-        $sub_category = DB::table('categories')->where('id','=', $article->categorie_id)->get();
-        $categ = DB::table('categories')->where('id','=', $sub_category[0]->id)->get();
-        $category = Categorie::find($categ[0]->id);
-        return view('admin.addarticle',['article'=>$article,'sub_category'=>$sub_category,'category'=>$category]);
+        if(sizeof($data) != 0){
+            $article = Article::find($data[0]->id);
+            $sub_category = DB::table('categories')->where('id','=', $article->categorie_id)->get();
+            $categ = DB::table('categories')->where('id','=', $sub_category[0]->id)->get();
+            $category = Categorie::find($categ[0]->id);
+            return view('admin.addarticle',['article'=>$article,'sub_category'=>$sub_category,'category'=>$category]);
+        }
+        else{
+            return abort(404);
+        }
     }
 
     public function edit_article(Request $request){

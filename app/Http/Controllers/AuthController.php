@@ -63,10 +63,12 @@ class AuthController extends Controller
         if(Auth::check()){
             $data = Auth::user();
             $request->session()->put('user', $data['name']);
-            if($data['user_type'] == "super_admin"){
+            if($data['user_type'] == "super_admin" or $data['user_type'] == "admin"){
                 return view('admin.dashboard',["data"=>$data]);
             }
-            return view('dashboard',["data"=>$data]);
+            $user = User::find($data->id)->userFavories()->get();
+
+            return view('dashboard',["data"=>$data,'user'=>$user]);
         }
         else{
             return Redirect::to("login")->with('info', 'Veuillez vous connecter');
@@ -78,16 +80,13 @@ class AuthController extends Controller
     {
         $u = User::all();
         $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->slug = Str::slug($request->name,'-');
+        $user->password = Hash::make($request->password);
         if( $u->isEmpty()){
-
-            $user->name = $request->name;
-            $user->email = $request->email;
             $user->user_type = 'super_admin';
             $user->user_state = 'actif';
-            $user->slug = Str::slug($request->name,'-');
-            $user->password = Hash::make($request->password);
-            $user->save();
-            return $user;
             /*return User::create([
                 'name'=> $data['name'],
                 'email'=> $data['email'],
@@ -95,18 +94,14 @@ class AuthController extends Controller
                 'password'=> Hash::make($data['password'])
             ]);*/
         }
-        else{
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->save();
-            return $user;
-            /*return User::create([
-                'name'=> $data['name'],
-                'email'=> $data['email'],
-                'password'=> Hash::make($data['password'])
-            ]);*/
+        $domaine = $this->after('@',$request->email);
+        if($domaine == 'biomedir.tg' and $user->user_type != 'super_admin' ){
+            $user->user_type = 'admin';
+            $user->user_state = 'inactif';
         }
+        dd($user);
+        $user->save();
+        return $user;
 
     }
 
@@ -116,5 +111,11 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
         return redirect('login');
+    }
+
+    public function after($start, $inthat)
+    {
+        if (!is_bool(strpos($inthat, $start)))
+            return substr($inthat, strpos($inthat,$start)+strlen($start));
     }
 }

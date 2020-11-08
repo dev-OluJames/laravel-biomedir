@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Mail\ContactMail;
 use App\Models\Contact;
 use App\Models\User;
+use Doctrine\DBAL\Driver\IBMDB2\DB2Connection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -15,8 +17,38 @@ class AdminController extends Controller
 {
 
     public function admins(){
-        $users = User::all();
-        return view('admin.admins',['users'=>$users]);
+        if ($this->actifCheck()){
+            $users = User::all();
+            return view('admin.admins',['users'=>$users]);
+        }else{
+            return redirect('no_access');
+        }
+
+    }
+
+    public function showAdmin($slug,$id){
+        if ($this->actifCheck()){
+            $id = intval($id);
+            $user = DB::table('users')->where('id','=',$id)->get();
+            $user = $user[0];
+            return view('admin.show_user',['user'=>$user]);
+        }else{
+            return redirect('no_access');
+        }
+
+    }
+
+    public function editAdmin(Request $request,$slug,$id){
+        if($this->actifCheck()){
+            $user = User::find($request->id);
+            $user->user_type = $request->type;
+            $user->user_state = $request->state;
+            $user->save();
+            return redirect('admins')->with('success','Vos Modifications ont été enregistré');
+        }else{
+            return redirect('no_access');
+        }
+
     }
 
     public function contact(){
@@ -54,6 +86,21 @@ class AdminController extends Controller
             return back()->with('error',$exception->getMessage());
         }
         return back()->with('success','Votre mail a été bien envoyé');
+    }
+
+    public function after($start, $inthat)
+    {
+        if (!is_bool(strpos($inthat, $start)))
+            return substr($inthat, strpos($inthat,$start)+strlen($start));
+    }
+
+    private function actifCheck(){
+        $user = Auth::user();
+        if($user->user_state =='actif'){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 

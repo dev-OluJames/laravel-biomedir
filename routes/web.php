@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
@@ -58,7 +59,13 @@ Route::get('product',[HomeController::class,'product']);
 
 Route::view('admins','admin.admins');
 
-Route::get('admins',[AdminController::class,'admins'])->middleware('user_protct_page');
+Route::get('admins',[AdminController::class,'admins'])->middleware('admin_protect_page');
+
+Route::get('admin/{slug}/{id}',[AdminController::class,'showAdmin'])->middleware('admin_protect_page');
+Route::post('admin/{slug}/{id}',[AdminController::class,'editAdmin'])->middleware('admin_protect_page');
+
+Route::get('account/{slug}/{id}',[UserController::class,'userAccount']);//->middleware('admin_protect_page');
+Route::post('account/{slug}/{id}',[UserController::class,'editAccount']);//->middleware('admin_protect_page');
 
 
 
