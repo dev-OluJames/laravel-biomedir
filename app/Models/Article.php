@@ -17,7 +17,7 @@ class Article extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
-    public function favoriesUseers()
+    public function favoriesUsers()
     {
         return $this->belongsToMany('App\Models\User');
     }

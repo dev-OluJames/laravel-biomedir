@@ -32,7 +32,7 @@ $(document).ready(function()
 {
 	"use strict";
 
-	/* 
+	/*
 
 	1. Vars and Inits
 
@@ -69,7 +69,7 @@ $(document).ready(function()
 		initTabLines();
 	});
 
-	/* 
+	/*
 
 	2. Set Header
 
@@ -100,7 +100,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	3. Init Custom Dropdown
 
@@ -165,7 +165,7 @@ $(document).ready(function()
 		});
 	}
 
-	/* 
+	/*
 
 	4. Init Page Menu
 
@@ -241,7 +241,7 @@ $(document).ready(function()
 		menuActive = false;
 	}
 
-	/* 
+	/*
 
 	5. Init Deals Slider
 
@@ -271,7 +271,7 @@ $(document).ready(function()
 				prev.on('click', function()
 				{
 					dealsSlider.trigger('prev.owl.carousel');
-				});	
+				});
 			}
 
 			if($('.deals_slider_next').length)
@@ -280,12 +280,12 @@ $(document).ready(function()
 				next.on('click', function()
 				{
 					dealsSlider.trigger('next.owl.carousel');
-				});	
+				});
 			}
 		}
 	}
 
-	/* 
+	/*
 
 	6. Init Tab Lines
 
@@ -324,7 +324,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	7. Init Tabs
 
@@ -370,13 +370,13 @@ $(document).ready(function()
 								initASlider(slider);
 							}
 						});
-					});	
+					});
 				});
 			});
 		}
 	}
 
-	/* 
+	/*
 
 	8. Init Featured Slider
 
@@ -392,7 +392,7 @@ $(document).ready(function()
 				var featuredSlider = $(this);
 				initFSlider(featuredSlider);
 			});
-				
+
 		}
 	}
 
@@ -469,7 +469,7 @@ $(document).ready(function()
 		});
 	}
 
-	/* 
+	/*
 
 	9. Init Favorites
 
@@ -477,6 +477,8 @@ $(document).ready(function()
 
 	function initFavs()
 	{
+	    // create the request
+        var httpRequest = new XMLHttpRequest()
 		// Handle Favorites
 		var items = document.getElementsByClassName('product_fav');
 		for(var x = 0; x < items.length; x++)
@@ -484,12 +486,22 @@ $(document).ready(function()
 			var item = items[x];
 			item.addEventListener('click', function(fn)
 			{
-				fn.target.classList.toggle('active');
+			    fn.preventDefault()
+                console.log(this.parentNode.getAttribute('href'))
+			    httpRequest.open('GET', this.parentNode.getAttribute('href'),true)
+                httpRequest.send()
+                httpRequest.onreadystatechange = function () {
+                    if(httpRequest.readyState === 4){
+                        fn.target.classList.toggle('active');
+                        location.reload();
+                    }
+                }
+
 			});
 		}
 	}
 
-	/* 
+	/*
 
 	10. Init ZIndex
 
@@ -499,7 +511,7 @@ $(document).ready(function()
 	{
 		// Hide slider dots on item hover
 		var items = document.getElementsByClassName('featured_slider_item');
-		
+
 		for(var x = 0; x < items.length; x++)
 		{
 			var item = items[x];
@@ -515,7 +527,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	11. Init Popular Categories Slider
 
@@ -563,7 +575,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	12. Init Banner 2 Slider
 
@@ -586,7 +598,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	13. Init Arrivals Slider
 
@@ -601,8 +613,8 @@ $(document).ready(function()
 			{
 				var arrivalsSlider = $(this);
 				initASlider(arrivalsSlider);
-			});	
-			
+			});
+
 		}
 	}
 
@@ -679,7 +691,7 @@ $(document).ready(function()
 		});
 	}
 
-	/* 
+	/*
 
 	14. Init Arrivals Slider ZIndex
 
@@ -689,7 +701,7 @@ $(document).ready(function()
 	{
 		// Hide slider dots on item hover
 		var items = document.getElementsByClassName('arrivals_slider_item');
-		
+
 		for(var x = 0; x < items.length; x++)
 		{
 			var item = items[x];
@@ -705,7 +717,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	15. Init Best Sellers Slider
 
@@ -721,7 +733,7 @@ $(document).ready(function()
 				var bestsellersSlider = $(this);
 
 				initBSSlider(bestsellersSlider);
-			})	
+			})
 		}
 	}
 
@@ -772,7 +784,7 @@ $(document).ready(function()
 		});
 	}
 
-	/* 
+	/*
 
 	16. Init Trends Slider
 
@@ -801,7 +813,18 @@ $(document).ready(function()
 
 			trendsSlider.on('click', '.trends_fav', function (ev)
 			{
-			    $(ev.target).toggleClass('active');
+			    var httpRequest = new XMLHttpRequest()
+                ev.preventDefault()
+                console.log(this.parentNode.getAttribute('href'))
+                httpRequest.open('GET', this.parentNode.getAttribute('href'),true)
+                httpRequest.send()
+                httpRequest.onreadystatechange = function () {
+                    if(httpRequest.readyState === 4){
+                        $(ev.target).toggleClass('active');
+                        location.reload();
+                    }
+                }
+
 			});
 
 			if($('.trends_prev').length)
@@ -824,7 +847,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	17. Init Reviews Slider
 
@@ -855,7 +878,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	18. Init Recently Viewed Slider
 
@@ -905,7 +928,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	19. Init Brands Slider
 
@@ -949,7 +972,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	20. Init Timer
 
@@ -994,16 +1017,16 @@ $(document).ready(function()
 				    var current_date = new Date().getTime();
 				    var seconds_left = (target_date - current_date) / 1000;
 				    console.log(seconds_left);
-				 
+
 				    // do some time calculations
 				    days = parseInt(seconds_left / 86400);
 				    seconds_left = seconds_left % 86400;
-				    
+
 				    hours = parseInt(seconds_left / 3600);
 				    hours = hours + days * 24;
 				    seconds_left = seconds_left % 3600;
-				    
-				     
+
+
 				    minutes = parseInt(seconds_left / 60);
 				    seconds = parseInt(seconds_left % 60);
 
@@ -1023,10 +1046,10 @@ $(document).ready(function()
 				    // display results
 				    h.text(hours);
 				    m.text(minutes);
-				    s.text(seconds); 
-				 
+				    s.text(seconds);
+
 				}, 1000);
-    		});	
-    	}	
+    		});
+    	}
     }
 });

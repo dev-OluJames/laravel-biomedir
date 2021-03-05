@@ -19,8 +19,9 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('index', [HomeController::class,'index']);
+Route::get('/', [HomeController::class,'index']);
 
-Route::get('login', [AuthController::class, 'index']);
+Route::get('login', [AuthController::class, 'login']);
 Route::post('post-login', [AuthController::class, 'postLogin']);
 Route::get('register', [AuthController::class, 'register']);
 Route::post('post-register', [AuthController::class, 'postRegister']);
@@ -67,5 +68,7 @@ Route::post('admin/{slug}/{id}',[AdminController::class,'editAdmin'])->middlewar
 Route::get('account/{slug}/{id}',[UserController::class,'userAccount']);//->middleware('admin_protect_page');
 Route::post('account/{slug}/{id}',[UserController::class,'editAccount']);//->middleware('admin_protect_page');
 
+Route::get('preference/{id}', [UserController::class,'userPreferences']);
+Route::get('remove/{id}', [UserController::class,'removePreferences']);
 
 

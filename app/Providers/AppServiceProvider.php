@@ -37,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
             $user = Auth::user();
             $view->with('aUser', $user );
         });
-
         $categories = Categorie::all();
         View::share('allCateg', $categories);
 
@@ -53,6 +52,8 @@ class AppServiceProvider extends ServiceProvider
             ->orderBy('view','desc')->limit(10)
             ->get();
         View::share('recent',$recent_view);
+
+
 
 
 

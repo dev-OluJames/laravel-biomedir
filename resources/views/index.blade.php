@@ -1,7 +1,9 @@
 @extends('master')
 @section('content')
 {{View::make('header')}}
-
+@section('script_content')
+<script src="{{asset('asset/js/custom.js')}}"></script>
+@endsection('script_content')
 <!-- Banner -->
 
 <div class="banner">
@@ -101,34 +103,10 @@
                                     <div class="deals_content">
                                         <div class="deals_info_line d-flex flex-row justify-content-start">
                                             <div class="deals_item_category"><a href="#">{{$item->category_name}}</a></div>
-                                            <div class="deals_item_price_a ml-auto">$300</div>
                                         </div>
                                         <div class="deals_info_line d-flex flex-row justify-content-start">
                                             <div class="deals_item_name">{{$item->article_name}}</div>
                                             <div class="deals_item_price ml-auto">{{$item->article_model}}</div>
-                                        </div>
-
-                                        <div class="deals_timer d-flex flex-row align-items-center justify-content-start">
-                                            <div class="deals_timer_title_container">
-                                                <div class="deals_timer_title">Hurry Up</div>
-                                                <div class="deals_timer_subtitle">Offer ends in:</div>
-                                            </div>
-                                            <div class="deals_timer_content ml-auto">
-                                                <div class="deals_timer_box clearfix" data-target-time="">
-                                                    <div class="deals_timer_unit">
-                                                        <div id="deals_timer1_hr" class="deals_timer_hr"></div>
-                                                        <span>hours</span>
-                                                    </div>
-                                                    <div class="deals_timer_unit">
-                                                        <div id="deals_timer1_min" class="deals_timer_min"></div>
-                                                        <span>mins</span>
-                                                    </div>
-                                                    <div class="deals_timer_unit">
-                                                        <div id="deals_timer1_sec" class="deals_timer_sec"></div>
-                                                        <span>secs</span>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -181,7 +159,29 @@
                                                             <a href="{{url('show_article/'.$item->slug)}}"><button class="product_cart_button">Voir</button></a>
                                                         </div>
                                                     </div>
-                                                    <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        <!--hey don't forget to chnge also bootstrap.min.css-->
+                                                        @if($favories)
+                                                        @if(sizeof($favories) != 0)
+                                                        <a href="{{url('preference/'.$item->id)}}">
+                                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @foreach ($favories as $favori)
+                                                        @if($favori->article_id == $item->id)
+                                                        <a href="{{url('remove/'.$favori->id)}}">
+                                                            <div class="product_fav active"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @endif
+                                                        @endforeach
+                                                        @else
+                                                        <a href="{{url('preference/'.$item->id)}}">
+                                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @endif
+                                                        @else
+                                                            <a href="{{url('preference/'.$item->id)}}">
+                                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                        @endif
                                                     <ul class="product_marks">
                                                         <li class="product_mark product_discount">-{{$item->article_promotion}}</li>
                                                         <li class="product_mark product_new">new</li>
@@ -219,7 +219,28 @@
                                                             <a href="{{url('show_article/'.$item->slug)}}"><button class="product_cart_button">Voir</button></a>
                                                         </div>
                                                     </div>
-                                                    <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                    @if($favories)
+                                                        @if(sizeof($favories) != 0)
+                                                        <a href="{{url('preference/'.$item->id)}}">
+                                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @foreach ($favories as $favori)
+                                                        @if($favori->article_id == $item->id)
+                                                        <a href="{{url('remove/'.$favori->id)}}">
+                                                            <div class="product_fav active"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @endif
+                                                        @endforeach
+                                                        @else
+                                                        <a href="{{url('preference/'.$item->id)}}">
+                                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @endif
+                                                    @else
+                                                        <a href="{{url('preference/'.$item->id)}}">
+                                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                    @endif
                                                     <ul class="product_marks">
                                                         <li class="product_mark product_discount">-{{$item->article_promotion}}</li>
                                                         <li class="product_mark product_new">new</li>
@@ -257,7 +278,28 @@
                                                             <a href="{{url('show_article/'.$item->slug)}}"><button class="product_cart_button">Voir</button></a>
                                                         </div>
                                                     </div>
-                                                    <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                    @if($favories)
+                                                        @if(sizeof($favories) != 0)
+                                                        <a href="{{url('preference/'.$item->id)}}">
+                                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @foreach ($favories as $favori)
+                                                        @if($favori->article_id == $item->id)
+                                                        <a href="{{url('remove/'.$favori->id)}}">
+                                                            <div class="product_fav active"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @endif
+                                                        @endforeach
+                                                        @else
+                                                        <a href="{{url('preference/'.$item->id)}}">
+                                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @endif
+                                                    @else
+                                                        <a href="{{url('preference/'.$item->id)}}">
+                                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                    @endif
                                                     <ul class="product_marks">
                                                         <li class="product_mark product_discount">-{{$item->article_promotion}}</li>
                                                         <li class="product_mark product_new">new</li>
@@ -294,7 +336,28 @@
                                                             <a href="{{url('show_article/'.$item->slug)}}"><button class="product_cart_button">Voir</button></a>
                                                         </div>
                                                     </div>
-                                                    <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                    @if($favories)
+                                                        @if(sizeof($favories) != 0)
+                                                        <a href="{{url('preference/'.$item->id)}}">
+                                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @foreach ($favories as $favori)
+                                                        @if($favori->article_id == $item->id)
+                                                        <a href="{{url('remove/'.$favori->id)}}">
+                                                            <div class="product_fav active"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @endif
+                                                        @endforeach
+                                                        @else
+                                                        <a href="{{url('preference/'.$item->id)}}">
+                                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                        @endif
+                                                    @else
+                                                        <a href="{{url('preference/'.$item->id)}}">
+                                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        </a>
+                                                    @endif
                                                     <ul class="product_marks">
                                                         <li class="product_mark product_discount">-{{$item->article_promotion}}</li>
                                                         <li class="product_mark product_new">new</li>
@@ -360,7 +423,28 @@
                            <li class="trends_mark trends_discount">-25%</li>
                            <li class="trends_mark trends_new">new</li>
                        </ul>
-                       <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                             @if($favories)
+                                 @if(sizeof($favories) != 0)
+                                 <a href="{{url('preference/'.$item->id)}}">
+                                     <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                 </a>
+                                 @foreach ($favories as $favori)
+                                 @if($favori->article_id == $item->id)
+                                 <a href="{{url('remove/'.$favori->id)}}">
+                                     <div class="trends_fav active"><i class="fas fa-heart"></i></div>
+                                 </a>
+                                 @endif
+                                 @endforeach
+                                 @else
+                                 <a href="{{url('preference/'.$item->id)}}">
+                                     <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                 </a>
+                                 @endif
+                             @else
+                                 <a href="{{url('preference/'.$item->id)}}">
+                                     <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                 </a>
+                             @endif
                    </div>
                  </div>
                  @endforeach
@@ -490,7 +574,28 @@
                                                                 <a href="{{url('show_article/'.$item->slug)}}"><button class="product_cart_button">Voir</button></a>
                                                             </div>
                                                         </div>
-                                                        <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        @if($favories)
+                                                            @if(sizeof($favories) != 0)
+                                                            <a href="{{url('preference/'.$item->id)}}">
+                                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                            @foreach ($favories as $favori)
+                                                            @if($favori->article_id == $item->id)
+                                                            <a href="{{url('remove/'.$favori->id)}}">
+                                                                <div class="product_fav active"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                            @endif
+                                                            @endforeach
+                                                            @else
+                                                            <a href="{{url('preference/'.$item->id)}}">
+                                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                            @endif
+                                                        @else
+                                                            <a href="{{url('preference/'.$item->id)}}">
+                                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                        @endif
                                                         <ul class="product_marks">
                                                             <li class="product_mark product_discount">{{$item->article_promotion}}</li>
                                                             <li class="product_mark product_new">new</li>
@@ -525,7 +630,28 @@
                                                                 <a href="{{url('show_article/'.$item->slug)}}"><button class="product_cart_button">Voir</button></a>
                                                             </div>
                                                         </div>
-                                                        <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        @if($favories)
+                                                            @if(sizeof($favories) != 0)
+                                                            <a href="{{url('preference/'.$item->id)}}">
+                                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                            @foreach ($favories as $favori)
+                                                            @if($favori->article_id == $item->id)
+                                                            <a href="{{url('remove/'.$favori->id)}}">
+                                                                <div class="product_fav active"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                            @endif
+                                                            @endforeach
+                                                            @else
+                                                            <a href="{{url('preference/'.$item->id)}}">
+                                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                            @endif
+                                                        @else
+                                                            <a href="{{url('preference/'.$item->id)}}">
+                                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                        @endif
                                                         <ul class="product_marks">
                                                             <li class="product_mark product_discount">{{$item->article_promotion}}</li>
                                                             <li class="product_mark product_new">new</li>
@@ -560,7 +686,28 @@
                                                                 <a href="{{url('show_article/'.$item->slug)}}"><button class="product_cart_button">Voir</button></a>
                                                             </div>
                                                         </div>
-                                                        <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                        @if($favories)
+                                                            @if(sizeof($favories) != 0)
+                                                            <a href="{{url('preference/'.$item->id)}}">
+                                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                            @foreach ($favories as $favori)
+                                                            @if($favori->article_id == $item->id)
+                                                            <a href="{{url('remove/'.$favori->id)}}">
+                                                                <div class="product_fav active"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                            @endif
+                                                            @endforeach
+                                                            @else
+                                                            <a href="{{url('preference/'.$item->id)}}">
+                                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                            @endif
+                                                        @else
+                                                            <a href="{{url('preference/'.$item->id)}}">
+                                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                            </a>
+                                                        @endif
                                                         <ul class="product_marks">
                                                             <li class="product_mark product_discount">{{$item->article_promotion}}</li>
                                                             <li class="product_mark product_new">new</li>
@@ -645,7 +792,28 @@
                                              <div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
                                          </div>
                                      </div>
-                                     <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
+                                     @if($favories)
+                                         @if(sizeof($favories) != 0)
+                                         <a href="{{url('preference/'.$item->id)}}">
+                                             <div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
+                                         </a>
+                                         @foreach ($favories as $favori)
+                                         @if($favori->article_id == $item->id)
+                                         <a href="{{url('remove/'.$favori->id)}}">
+                                             <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
+                                         </a>
+                                         @endif
+                                         @endforeach
+                                         @else
+                                         <a href="{{url('preference/'.$item->id)}}">
+                                             <div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
+                                         </a>
+                                         @endif
+                                     @else
+                                         <a href="{{url('preference/'.$item->id)}}">
+                                             <div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
+                                         </a>
+                                     @endif
                                      <ul class="bestsellers_marks">
                                          <li class="bestsellers_mark bestsellers_discount">{{$item->article_promotion}}</li>
                                          <li class="bestsellers_mark bestsellers_new">new</li>
@@ -678,7 +846,28 @@
                                              <div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
                                          </div>
                                      </div>
-                                     <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
+                                     @if($favories)
+                                         @if(sizeof($favories) != 0)
+                                         <a href="{{url('preference/'.$item->id)}}">
+                                             <div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
+                                         </a>
+                                         @foreach ($favories as $favori)
+                                         @if($favori->article_id == $item->id)
+                                         <a href="{{url('remove/'.$favori->id)}}">
+                                             <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
+                                         </a>
+                                         @endif
+                                         @endforeach
+                                         @else
+                                         <a href="{{url('preference/'.$item->id)}}">
+                                             <div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
+                                         </a>
+                                         @endif
+                                     @else
+                                         <a href="{{url('preference/'.$item->id)}}">
+                                             <div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
+                                         </a>
+                                     @endif
                                      <ul class="bestsellers_marks">
                                          <li class="bestsellers_mark bestsellers_discount">{{$item->article_promotion}}</li>
                                          <li class="bestsellers_mark bestsellers_new">new</li>
@@ -711,7 +900,29 @@
                                        <div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
                                    </div>
                                </div>
-                                  <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
+                                 @if($favories)
+                                      @if(sizeof($favories) != 0)
+                                      <a href="{{url('preference/'.$item->id)}}">
+                                          <div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
+                                      </a>
+                                      @foreach ($favories as $favori)
+                                      @if($favori->article_id == $item->id)
+                                      <a href="{{url('remove/'.$favori->id)}}">
+                                          <div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
+                                      </a>
+                                      @endif
+                                      @endforeach
+                                      @else
+                                      <a href="{{url('preference/'.$item->id)}}">
+                                          <div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
+                                      </a>
+                                      @endif
+                                  @else
+                                      <a href="{{url('preference/'.$item->id)}}">
+                                          <div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
+                                      </a>
+                                  @endif
+
                                   <ul class="bestsellers_marks">
                                       <li class="bestsellers_mark bestsellers_discount">{{$item->article_promotion}}</li>
                                       <li class="bestsellers_mark bestsellers_new">new</li>
@@ -769,6 +980,4 @@
 
 {{View::make('most_viewed')}}
 @endsection('content')
-@section('script_content')
-<script src="{{asset('asset/js/custom.js')}}"></script>
-@endsection('script_content')
+

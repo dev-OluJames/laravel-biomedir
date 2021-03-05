@@ -15,8 +15,8 @@
                         <div class="cart_title">List de Vos Favoris</div>
                         <div class="cart_items">
                             <ul class="cart_list">
-                                @if(sizeof($user) != 0)
-                                @foreach ($user as $favori)
+                                @if(sizeof($favories) != 0)
+                                @foreach ($favories as $favori)
                                 <li class="cart_item clearfix">
                                     <div class="cart_item_image"><img src="{{asset('asset/images/'.$favori->article_image1)}}" alt=""></div>
                                     <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">

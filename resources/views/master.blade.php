@@ -4,7 +4,7 @@
     <title>Biomedir - @yield('title')</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
     <link rel="shortcut icon" type="image/png" href="{{ asset('asset/images/favicon.png')}}">
     <meta property="og:image" content="{{ asset('asset/images/favicon.png')}}">
     <meta property="og:image:width" content="180">
@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/main_styles.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('asset/styles/responsive.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
 
 
 
@@ -45,6 +46,7 @@
     <script src="{{asset('asset/plugins/Isotope/isotope.pkgd.min.js')}}"></script>
     <script src="{{asset('asset/plugins/jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
     @yield('script_content')
+
 
 
 

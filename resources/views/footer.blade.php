@@ -79,13 +79,14 @@
 
             </div><div class="col-lg-5">
                 <div class="fb-page" data-href="https://web.facebook.com/Biomedir-Togo-116132360287713"
-                     <!--data-tabs="timeline"-->
+
                      data-width="480"
                      data-height="250"
                      data-small-header="false"
                      data-adapt-container-width="true"
                      data-hide-cover="false"
                      data-show-facepile="true">
+                    <!--data-tabs="timeline"-->
                 </div>
             </div>
 
@@ -102,7 +103,7 @@
 
                 <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
                     <div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by <a href="#" target="_blank">Bright_Tech</a>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by <a href="#" target="_blank"> >_ NDawn -tech</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
                     <div class="logos ml-sm-auto">

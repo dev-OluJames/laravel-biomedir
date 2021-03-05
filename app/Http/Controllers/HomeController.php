@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -28,13 +30,21 @@ class HomeController extends Controller
 
         $autres = $this->getSelect('Equipements et Accessoires'.'and'.' c2.category_name'.'='.'Hygiène et Désinfection');
 
+        if(Auth::check()){
+            $user = Auth::user();
+            $favories = User::find($user->id)->userFavories()->select('article_id','favories.id')->get();
 
+        }else{
+            $favories = null;
+        }
         return view('index',['articles'=>$articles,
-                                    'labo'=>$labo,
-                                    'chirurgie'=>$chirurgie,
-                                    'imagerie'=>$imagerie,
-                                    'orl'=>$orl,
-                                    'autres'=>$autres]);
+            'labo'=>$labo,
+            'chirurgie'=>$chirurgie,
+            'imagerie'=>$imagerie,
+            'orl'=>$orl,
+            'autres'=>$autres,
+            'favories'=>$favories]);
+
     }
 
     public function product(){

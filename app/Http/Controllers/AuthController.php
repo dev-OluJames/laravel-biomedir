@@ -13,7 +13,7 @@ use \Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
-    public function index()
+    public function login()
     {
         if(\session()->has('user')){
             return \redirect('dashboard');
@@ -66,9 +66,9 @@ class AuthController extends Controller
             if($data['user_type'] == "super_admin" or $data['user_type'] == "admin"){
                 return view('admin.dashboard',["data"=>$data]);
             }
-            $user = User::find($data->id)->userFavories()->get();
+            $favories = User::find($data->id)->userFavories()->get();
 
-            return view('dashboard',["data"=>$data,'user'=>$user]);
+            return view('dashboard',["data"=>$data,'favories'=>$favories]);
         }
         else{
             return Redirect::to("login")->with('info', 'Veuillez vous connecter');

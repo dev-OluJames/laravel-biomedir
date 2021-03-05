@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Favorie;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,4 +47,27 @@ class UserController extends Controller
         }
 
     }
+
+    public function userPreferences($id){
+        if(Auth::check()){
+            $user = Auth::user();
+            $favorie = new Favorie();
+            $favorie->user_id = $user->id;
+            $favorie->article_id = $id;
+            $favorie->save();
+            return back()->with('succes','Article Ajouté à vos liste de favories');
+        }else{
+            return redirect('login')->with('info','Veuillez bien vous Conecter avant d efectuer cette opération');
+        }
+
+    }
+
+    public function removePreferences($id){
+        if(Auth::check()){
+            $favorie = Favorie::find($id);
+            $favorie->delete();
+            return back()->with('succes','Article retiré de favories');
+        }
+    }
+
 }
